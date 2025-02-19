@@ -1,0 +1,30 @@
+# Step 1: Use Node.js to build Angular
+FROM node:18 AS build
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and install dependencies
+COPY client/package.json client/package-lock.json ./
+RUN npm install
+
+# Copy Angular project files
+COPY client /app
+
+# Build Angular production files
+RUN npm run build -- --configuration=production
+
+# Step 2: Use Nginx to serve Angular
+FROM nginx:alpine
+
+# Remove default Nginx index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy built Angular files to Nginx public directory
+COPY --from=build /app/dist/countdown-app/browser /usr/share/nginx/html
+
+# Expose port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

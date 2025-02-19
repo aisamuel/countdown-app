@@ -52,12 +52,16 @@ INSTALLED_APPS = [
 ]
 
 ASGI_APPLICATION = "countdown_project.asgi.application"
+USE_LOCAL = os.getenv("USE_LOCAL", "True") == "True"
+REDIS_HOST = "redis"
+if USE_LOCAL:
+    REDIS_HOST = "redis://redis:6379/1"
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],  # Ensure Redis is running
+            "hosts": [(REDIS_HOST, 6379)],  # Ensure Redis is running
         },
     },
 }
