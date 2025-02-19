@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -73,6 +73,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# 🔹 Allow serving static files with WhiteNoise in production
+INSTALLED_APPS += ["whitenoise.runserver_nostatic"]
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
 ROOT_URLCONF = 'countdown_project.urls'
 
 TEMPLATES = [
@@ -96,16 +100,39 @@ CORS_ALLOW_ALL_ORIGINS = True  # Change this for production security
 
 WSGI_APPLICATION = 'countdown_project.wsgi.application'
 
+# 🔹 Ensure STATIC_ROOT is defined for collectstatic
+STATIC_ROOT = os.getenv("STATIC_ROOT", BASE_DIR / "staticfiles")
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", BASE_DIR / "media")
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# 🔹 Read the database type from an environment variable
+USE_SQLITE = os.getenv("USE_SQLITE", "True") == "True"
+
+if USE_SQLITE:
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    STATICFILES_DIRS = []
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('POSTGRES_DB', 'timerdb'),
+            'USER': os.getenv('POSTGRES_USER', 'timeruser'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'securepassword'),
+            'HOST': os.getenv('POSTGRES_HOST', 'db'),
+            'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        }
+    }
+
+# 🔹 Debug print to check which database is being used
+print(f"Using {'SQLite' if USE_SQLITE else 'PostgreSQL'} database")
 
 
 # Password validation
