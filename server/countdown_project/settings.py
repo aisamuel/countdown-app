@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0d@h8lmg!vaziw2p8@n2ywy-a#dn)iuefa8*e#r6=yh&2f1x_%
 DEBUG = True
 
 # Add WebSocket URL to ALLOWED_HOSTS
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "institutional-joyan-samuel65-601eb3e3.koyeb.app"]
 
 # Allow WebSockets in CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
@@ -52,16 +52,12 @@ INSTALLED_APPS = [
 ]
 
 ASGI_APPLICATION = "countdown_project.asgi.application"
-USE_LOCAL = os.getenv("USE_LOCAL", "True") == "True"
-REDIS_HOST = "redis"
-if USE_LOCAL:
-    REDIS_HOST = "redis://redis:6379/1"
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(REDIS_HOST, 6379)],  # Ensure Redis is running
+            "hosts": [os.getenv("REDIS_URL", "redis://localhost:6379/1")],
         },
     },
 }
