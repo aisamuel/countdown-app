@@ -196,10 +196,5 @@ Access the deployed version of the app at:
 
 ---
 
-## **📌 License**
-📜 **MIT License** – Feel free to modify and use! 🚀
-
----
-
 ## **🚀 Now You're Ready to Run CountdownApp!**
 🔥 Let me know if you need **more improvements or extra features!** 🚀😊

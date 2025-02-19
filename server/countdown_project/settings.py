@@ -95,8 +95,18 @@ TEMPLATES = [
     },
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # Change this for production security
+# CORS Settings (Allow frontend URLs)
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
 
+# Default CORS Allowed Origins (if not set in .env)
+CORS_ALLOWED_ORIGINS += [
+    "http://localhost:4200",
+    "http://localhost",
+    "https://distinct-jackal-samuel65-4969e964.koyeb.app"
+]
+
+# Allow all origins for WebSockets (CORS does not apply to WS, but security can be handled separately)
+CORS_ALLOW_CREDENTIALS = True
 
 WSGI_APPLICATION = 'countdown_project.wsgi.application'
 
