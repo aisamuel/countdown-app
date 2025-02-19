@@ -1,0 +1,205 @@
+/* 🔹 Main Container */
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  
+/* 🔹 Event Creation Card */
+.create-event {
+    width: 100%;
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .create-event:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 🔹 Card Title Styling */
+  .card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #007bff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  /* 🔹 Card Title Icon */
+  .card-title mat-icon {
+    font-size: 26px;
+    color: #007bff;
+  }
+  
+  /* 🔹 Event Form */
+  .event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  /* 🔹 Full-Width Form Fields */
+  .full-width {
+    width: 100%;
+  }
+  
+  /* 🔹 Timer Input Fields */
+  .time-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  /* 🔹 Make Input Fields More Appealing */
+  .mat-form-field {
+    flex: 1;
+  }
+  
+  /* 🔹 Create Button Styling */
+  .create-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .create-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .create-button mat-icon {
+    font-size: 22px;
+  }
+  
+  /* 🔹 Ensure Button is Aligned Properly */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* 🔹 Timer Card */
+  .timer-card {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, #ffffff, #f1f1f1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-left: 6px solid #007bff;
+  }
+  
+  .timer-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 🔹 Timer Card Title */
+  .timer-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #007bff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* 🔹 Countdown Display */
+  .countdown-display {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff4081;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  /* 🔹 Timer Action Buttons */
+  .mat-raised-button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  /* 🔹 Start/Pause Button */
+  .start-pause-button {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .start-pause-button:hover {
+    background: #388e3c;
+  }
+  
+  /* 🔹 Reset Button */
+  .reset-button {
+    background: #f44336;
+    color: white;
+  }
+  
+  .reset-button:hover {
+    background: #d32f2f;
+  }
+  
+  /* 🔹 Timer Card Actions */
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  
+  /* 🔹 Responsive Design for Mobile */
+  @media (max-width: 600px) {
+    .time-inputs {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    mat-card-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .mat-raised-button {
+      width: 100%;
+    }
+  }
+  

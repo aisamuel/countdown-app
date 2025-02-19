@@ -1,0 +1,73 @@
+# 🔹 Ignore Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.db
+*.log
+.venv/
+venv/
+env/
+
+# 🔹 Ignore Django secret settings & migrations
+server/.env
+server/.env.*
+server/settings.pyc
+server/db.sqlite3
+server/media/
+server/staticfiles/
+server/static/
+server/countdown_project/migrations/
+
+# 🔹 Ignore PostgreSQL & Redis Docker volumes
+postgres_data/
+redis_data/
+server/dump.rdb
+
+# 🔹 Ignore Django compiled files
+server/**/*.pyc
+server/**/*.pyo
+server/**/*.orig
+server/*.log
+
+# 🔹 Ignore Nginx & Docker build files
+docker/nginx/*.log
+docker/nginx/*.conf~
+docker/nginx/access.log
+docker/nginx/error.log
+docker/nginx/nginx.pid
+
+# 🔹 Ignore Docker build cache
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.override.yml~
+docker-compose.override.yaml~
+*.dockerfile
+*.dockerenv
+
+# 🔹 Ignore Node.js dependencies & build files (Angular)
+client/node_modules/
+client/dist/
+client/package-lock.json
+client/.angular/
+client/.cache/
+client/.turbo/
+
+# 🔹 Ignore VS Code & JetBrains IDE settings
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+
+# 🔹 Ignore system files & unnecessary macOS/Windows artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+
+# 🔹 Ignore log files & temp files
+logs/
+*.log
+*.out
+*.tmp
+*.bak
