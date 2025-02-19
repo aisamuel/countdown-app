@@ -190,11 +190,5 @@ Access the deployed version of the app at:
 
 ---
 
-## **📌 Contributors**
-👨‍💻 **Your Name** - Developer  
-🌐 **GitHub:** [aisamuel](https://github.com/aisamuel)  
-
----
-
 ## **🚀 Now You're Ready to Run CountdownApp!**
 🔥 Let me know if you need **more improvements or extra features!** 🚀😊
