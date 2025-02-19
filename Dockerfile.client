@@ -12,7 +12,7 @@ RUN npm install
 COPY client /app
 
 # Build Angular production files
-RUN npm run build
+RUN npm run build -- --configuration=development
 
 # Step 2: Use Nginx to serve Angular
 FROM nginx:alpine

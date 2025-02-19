@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0d@h8lmg!vaziw2p8@n2ywy-a#dn)iuefa8*e#r6=yh&2f1x_%'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-0d@h8lmg!vaziw2p8@n2ywy-a#dn)iuefa8*e#r6=yh&2f1x_%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', False)
 
 # Add WebSocket URL to ALLOWED_HOSTS
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "institutional-joyan-samuel65-601eb3e3.koyeb.app"]

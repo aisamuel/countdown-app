@@ -17,6 +17,7 @@ server/media/
 server/staticfiles/
 server/static/
 server/countdown_project/migrations/
+.env
 
 # 🔹 Ignore PostgreSQL & Redis Docker volumes
 postgres_data/
