@@ -1,0 +1,29 @@
+# Use official Python image
+FROM python:3.10
+
+# Set work directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y netcat-openbsd
+
+# Copy requirements and install dependencies
+COPY server/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy Django project files
+COPY server /app
+
+# Copy entrypoint script & set permissions
+COPY server/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV DJANGO_SETTINGS_MODULE=countdown_project.settings
+
+# Expose port
+EXPOSE 8000
+
+# Run entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]
