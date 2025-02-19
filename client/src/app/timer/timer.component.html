@@ -1,65 +1,64 @@
 <div class="timer-container">
 
-    <!-- 🔹 Event Creation Form -->
-    <mat-card class="create-event">
-      <mat-card-title class="card-title">
-        <mat-icon>event</mat-icon> Create a New Timer Event
-      </mat-card-title>
-      <mat-card-content>
-        <form class="event-form">
-          <!-- Event Name -->
-          <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Event Name</mat-label>
-            <input matInput type="text" [(ngModel)]="newEventName">
+  <!-- 🔹 Event Creation Form -->
+  <mat-card class="create-event">
+    <mat-card-title class="card-title">
+      <mat-icon>event</mat-icon> Create a New Timer Event
+    </mat-card-title>
+    <mat-card-content>
+      <form class="event-form">
+        <!-- Event Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Event Name</mat-label>
+          <input matInput type="text" [(ngModel)]="newEventName" name="eventName">
+        </mat-form-field>
+
+        <!-- Timer Inputs -->
+        <div class="time-inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>Hours</mat-label>
+            <input matInput type="number" min="0" [(ngModel)]="newEventHours" name="eventHours">
           </mat-form-field>
-  
-          <!-- Timer Inputs -->
-          <div class="time-inputs">
-            <mat-form-field appearance="outline">
-              <mat-label>Hours</mat-label>
-              <input matInput type="number" min="0" [(ngModel)]="newEventHours">
-            </mat-form-field>
-  
-            <mat-form-field appearance="outline">
-              <mat-label>Minutes</mat-label>
-              <input matInput type="number" min="0" max="59" [(ngModel)]="newEventMinutes">
-            </mat-form-field>
-  
-            <mat-form-field appearance="outline">
-              <mat-label>Seconds</mat-label>
-              <input matInput type="number" min="0" max="59" [(ngModel)]="newEventSeconds">
-            </mat-form-field>
-          </div>
-  
-          <!-- Create Button -->
-          <div class="button-container">
-            <button class="create-button" (click)="createEvent()">
-              <mat-icon>add_circle</mat-icon> Create Event
-            </button>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
-  
-    <!-- 🔹 List of Active Timers -->
-    <mat-card *ngFor="let timer of timers" class="timer-card">
-      <mat-card-title class="timer-title">
-        <mat-icon>alarm</mat-icon> {{ timer.event_name }}
-      </mat-card-title>
-      <mat-card-content>
-        <div class="countdown-display">{{ formattedTime(timer) }}</div>
-      </mat-card-content>
-  
-      <mat-card-actions>
-        <button mat-raised-button class="start-pause-button" (click)="toggleStartPause(timer)">
-          <mat-icon>{{ timer.isRunning ? 'pause' : 'play_arrow' }}</mat-icon>
-          {{ timer.isRunning ? 'Pause' : 'Start' }}
-        </button>
-  
-        <button mat-raised-button class="reset-button" (click)="resetTimer(timer)">
-          <mat-icon>refresh</mat-icon> Reset
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  
+
+          <mat-form-field appearance="outline">
+            <mat-label>Minutes</mat-label>
+            <input matInput type="number" min="0" max="59" [(ngModel)]="newEventMinutes" name="eventMinutes">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Seconds</mat-label>
+            <input matInput type="number" min="0" max="59" [(ngModel)]="newEventSeconds" name="eventSeconds">
+          </mat-form-field>
+        </div>
+
+        <!-- Create Button -->
+        <div class="button-container">
+          <button class="create-button" (click)="createEvent()">
+            <mat-icon>add_circle</mat-icon> Create Event
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- 🔹 List of Active Timers -->
+  <mat-card *ngFor="let timer of timers" class="timer-card">
+    <mat-card-title class="timer-title">
+      <mat-icon>alarm</mat-icon> {{ timer.event_name }}
+    </mat-card-title>
+    <mat-card-content>
+      <div class="countdown-display">{{ formattedTime(timer) }}</div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button class="start-pause-button" (click)="toggleStartPause(timer)">
+        <mat-icon>{{ timer.isRunning ? 'pause' : 'play_arrow' }}</mat-icon>
+        {{ timer.isRunning ? 'Pause' : 'Start' }}
+      </button>
+
+      <button mat-raised-button class="reset-button" (click)="resetTimer(timer)">
+        <mat-icon>refresh</mat-icon> Reset
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
