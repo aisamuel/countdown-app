@@ -48,7 +48,6 @@ docker-compose.override.yaml~
 # 🔹 Ignore Node.js dependencies & build files (Angular)
 client/node_modules/
 client/dist/
-client/package-lock.json
 client/.angular/
 client/.cache/
 client/.turbo/
