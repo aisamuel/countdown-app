@@ -49,7 +49,7 @@ cd countdown-app
 ---
 
 ## **📌 Step 2: Set Up Environment Variables**
-Create a **`.env` file** inside the `server/` directory:
+Create a **`.env` file** inside the root directory and copy the content of sample.dev into it:
 ```ini
 # Static & Media Files Configuration
 STATIC_ROOT=/app/staticfiles
